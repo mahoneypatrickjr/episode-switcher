@@ -33,7 +33,7 @@ const EpisodeSwitcherContainer = () => {
     async function fetchEpisodes() {
       const request = await axios.get(`/shows/${currentShow.id}/episodes`);
       const episodes = {};
-      request.data.map((ep) => {
+      request.data.forEach((ep) => {
         const season = episodes[ep.season];
         if (!season) {
           episodes[ep.season] = [ep];

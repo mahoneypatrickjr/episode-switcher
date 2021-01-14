@@ -16,10 +16,10 @@ const EpisodeSwitcherDropdownGroup = ({
   handleEpisodeSwitch,
   error,
 }) => {
-  const [season, setSeason] = useState();
-  const [episodes, setEpisodes] = useState();
-  const [episode, setEpisode] = useState();
-  const [searchTerm, setSearchTerm] = useState();
+  const [season, setSeason] = useState('');
+  const [episodes, setEpisodes] = useState([]);
+  const [episode, setEpisode] = useState('');
+  const [searchTerm, setSearchTerm] = useState([]);
 
   useEffect(() => {
       if(Object.keys(episodeList).length > 0){
