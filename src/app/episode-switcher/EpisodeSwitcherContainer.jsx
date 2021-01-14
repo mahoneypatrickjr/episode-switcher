@@ -90,7 +90,7 @@ const EpisodeSwitcherContainer = () => {
     <>
       <Navbar variant="dark" bg="dark">
         <Container>
-          <Navbar.Brand onClick={() => location.reload()}>
+          <Navbar.Brand onClick={() => window.location.reload()}>
             Episode Switcher
           </Navbar.Brand>
           <Form
