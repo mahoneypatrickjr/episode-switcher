@@ -10,21 +10,23 @@ const EpisodeSwitcherContainer = () => {
   const [isFetching, setIsFetching]= useState(true);
 
   useEffect(() => {
-    async function fetchShow(randomNumber) {
+    function getRandomNumber(){
+      // in my testing it seems 52926 is the high end cap
+      // because the page loads a random number it felt more correct to
+      // hard code the cap to the right number rather than guess and implement a
+      // 404 which would not be obvious to an end user why nothing was found
+      return Math.floor(Math.random() * (52926 - 0 + 1)) + 0;
+      }
+    async function fetchShow() {
       try{
-        const request = await axios.get(`/shows/${randomNumber}`);
+        const request = await axios.get(`/shows/${getRandomNumber()}`);
         setCurrentShow(request.data);
       } catch(e){
-        location.reload();
+        fetchShow();
       }
     }
     setIsFetching(true);
-    // in my testing it seems 52926 is the high end cap
-    // because the page loads a random number it felt more correct to
-    // hard code the cap to the right number rather than guess and implement a
-    // 404 which would not be obvious to an end user why nothing was found
-    const randomNumber = Math.floor(Math.random() * (52926 - 0 + 1)) + 0;
-    fetchShow(randomNumber);
+    fetchShow();
   }, []);
 
   useEffect(() => {
